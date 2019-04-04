@@ -1,0 +1,92 @@
+Install These Tools
+1.Android Studio
+2. git
+3. vscode extensions:
+	react native tools, eslint, prettier, code spell checker, auto close tag, auto import, auto rename tag, ES7 snippets
+4. react native debugger
+5. node
+6. expo account
+
+###
+
+To Get Started using Expo CLI
+
+1. npm install -g expo-cli
+note: https://facebook.github.io/watchman/docs/install.html
+2. expo init
+3. cd projectname
+4. npm start
+
+###
+
+To Get Started Using React Native CLI
+
+1. npm install -g react-native-cli
+2. react-native init MyApp
+3. react-native run-ios
+4. react-native run-android
+
+###
+
+To Start Hot Reload
+
+Ctrl + M or Command + M on Android
+Command + control + z on iOS
+Click Enable Live Reload
+Click Hot Reloading
+
+###
+
+Debugging
+
+Ctrl + M or Command + M on Android
+Command + control + z on iOS
+Click Debug JS Remotely
+or just Console.Warn("Any text", yourObjectHere);
+
+###
+
+Trouble Shooting
+
+
+EXPO
+rm -rf node_modules/ && npm i
+expo start --clear
+
+
+React Native CLI
+Control + c on the Metro Bundler's terminal
+rm -rf node_modules/ && npm i
+watchman watch-del-all
+rm -rf /tmp/metro-bundler-cache-*
+rm -rf /tmp/haste-map-react-native-packager-*
+react-native start --reset-cache
+
+ERROR: No bundle URL present
+Running the following command in your project root directory to delete the iOS build directory, and to kill other React Native sessions (assuming they're running on default port 8081) before re-building:
+rm -rf ios/build/; kill $(lsof -t -i:8081); react-native run-ios
+Update your React Native workflow to avoid these error occur by combining the above combination of commands into an alias and appending it to your Bash config file .bashrc with this command:
+echo "alias rni=\"kill \$(lsof -t -i:8081); rm -rf ios/build/; react-native run-ios\"" >> ~/.bashrc; source ~/.bashrc
+
+ERROR: “:CFBundleIdentifier”, Does Not Exist error.
+Go to native ios folder and open xcode project.
+Go to File > Project Settings > Advanced...
+select custom > Relative to workspace
+products path should be 'build/Build/Products'
+intermediates path should be 'build/Build/Intermediates'
+or with this
+Open Xcode 10, File > Project Settings > Build System > switch dropdown to Legacy Build System.
+Run rm -rf ios/build
+react-native run-ios
+Google it.
+
+
+### PUBLISHING
+
+expo build:ios
+expo build:android
+
+
+
+
+
